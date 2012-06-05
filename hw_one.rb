@@ -4,7 +4,7 @@
 # Given a string, return whether or not it is a palindrome.
 def palindrome?(string)
   string = string.downcase.gsub!(/\W/, "")
-  string.reverse == string
+  string.reverse == string #Note to self - returns the evaluation of this condition.
 end
 
 # Part 1, b)
@@ -180,5 +180,35 @@ class Numeric
     end
   end
 end
+#puts 1.dollar.in(:yen)
 
-puts 1.292.dollars.in(:euros)
+class String
+  def palindrome?()
+    string = self.downcase.gsub(/\W/, "")
+    string.reverse == string  
+  end
+end
+#puts "A man, a plan, a canal -- Panamas".palindrome?
+
+module Enumerable
+  def palindrome?()
+    self == self.reverse
+  end
+end
+#puts [1,2,3,2,1].palindrome?
+
+class CartesianProduct
+include Enumerable
+# your code here
+end
+#Examples of use
+c = CartesianProduct.new([:a,:b], [4,5])
+c.each { |elt| puts elt.inspect }
+# [:a, 4]
+# [:a, 5]
+# [:b, 4]
+# [:b, 5]
+c = CartesianProduct.new([:a,:b], [])
+c.each { |elt| puts elt.inspect }
+# (nothing printed since Cartesian product
+# of anything with an empty collection is empty)
